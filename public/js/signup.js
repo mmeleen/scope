@@ -4,10 +4,6 @@ $(document).ready(function() {
   var usernameInput = $("input#username-input");
   var passwordInput = $("input#password-input");
   var DOBInput = $("input#DOB-input");
-  // var month = $("input#month-input");
-  // var day = $("input#day-input");
-  // // var DOB = `${month}${day}`;
-  // var DOBInput = `${month}${day}`;
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", function(event) {
