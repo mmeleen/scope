@@ -6,7 +6,10 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
+    res.sendFile(path.join(__dirname, "../public/sign.html"));
+  });
+
+  app.get("/sign", function(req, res) {
     if (req.user) {
       return res.redirect("/members");
     }
