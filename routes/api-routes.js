@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var astroJs = require("aztro-js");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -15,7 +16,10 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     db.User.create({
-      email: req.body.email,
+      username: req.body.username,
+      name: req.body.name,
+      DOB: req.body.DOB,
+      sign: req.body.sign,
       password: req.body.password
     })
       .then(function() {
@@ -41,9 +45,24 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        email: req.user.email,
+        username: req.user.username,
         id: req.user.id
       });
     }
+  });
+
+  // Routes for getting horoscopes calling astroJs npm package
+  app.get("/api/allHoroscopes/:sign", function(req, res) {
+    var sign = req.params.sign;
+    astroJs.getAllHoroscope(sign, function(response) {
+      res.json(response);
+    });
+  });
+
+  app.get("/api/todayHoroscope/:sign", function(req, res) {
+    var sign = req.params.sign;
+    astroJs.getTodaysHoroscope(sign, function(response) {
+      res.json(response);
+    });
   });
 };
