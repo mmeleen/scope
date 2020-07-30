@@ -2,6 +2,7 @@
 var db = require('../models');
 var passport = require('../config/passport');
 var astroJs = require('aztro-js');
+var axios = require('axios');
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -15,20 +16,43 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post('/api/signup', function(req, res) {
-    db.User.create({
-      username: req.body.username,
-      password: req.body.password,
-      name: req.body.name,
-      DOB: req.body.DOB,
-      sign: req.body.sign,
+    var signRes;
+    axios({
+      method: 'POST',
+      url: 'https://astrology-horoscope.p.rapidapi.com/zodiac_finder/result',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'x-rapidapi-host': 'astrology-horoscope.p.rapidapi.com',
+        'x-rapidapi-key': 'f3476faec6mshdc886b9bdfc5fbdp12fa3ejsn32aa8f20576d',
+        useQueryString: true
+      },
+      data: {
+        v4: 'json',
+        mystic_dob: req.body.DOB
+      }
     })
-      .then(function() {
-        res.redirect(307, '/api/login');
+      .then(response => {
+        console.log(response.data);
+        signRes = response.data.data.sunsign;
+        db.User.create({
+          username: req.body.username,
+          password: req.body.password,
+          name: req.body.name,
+          DOB: req.body.DOB,
+          sign: signRes
+        })
+          .then(function() {
+            res.redirect(307, '/api/login');
+          })
+          .catch(function(err) {
+            console.log(err);
+            res.status(401).json(err);
+          });
       })
-      .catch(function(err) {
-        console.log(err);
-        res.status(401).json(err);
+      .catch(error => {
+        console.log(error);
       });
+    console.log(signRes);
   });
 
   // Route for logging user out
@@ -47,7 +71,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         username: req.user.username,
-        id: req.user.id,
+        id: req.user.id
       });
     }
   });
@@ -64,6 +88,15 @@ module.exports = function(app) {
     var sign = req.params.sign;
     astroJs.getTodaysHoroscope(sign, function(response) {
       res.json(response);
+    });
+  });
+
+  // return user object from database
+  app.post('/api/search/:username', function(req, res) {
+    db.sequelize.findOne({ where: { username: req.params.username } }, function(
+      results
+    ) {
+      res.json(results);
     });
   });
 };
