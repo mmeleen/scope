@@ -71,7 +71,8 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         username: req.user.username,
-        id: req.user.id
+        id: req.user.id,
+        DOB: req.user.DOB
       });
     }
   });
@@ -87,6 +88,23 @@ module.exports = function(app) {
   app.get('/api/todayHoroscope/:sign', function(req, res) {
     var sign = req.params.sign;
     astroJs.getTodaysHoroscope(sign, function(response) {
+      // if user is logged in while searching
+      if (req.user) {
+        db.Search.create({
+          date: response.current_date,
+          description: response.description,
+          mood: response.mood,
+          color: response.color,
+          lucky_number: response.lucky_number,
+          lucky_time: response.lucky_time
+        })
+          .then(function() {
+            res.status(200);
+          })
+          .catch(function(err) {
+            res.status(401).json(err);
+          });
+      }
       res.json(response);
     });
   });
