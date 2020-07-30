@@ -78,11 +78,16 @@ module.exports = function(app) {
   });
 
   // Routes for getting horoscopes calling astroJs npm package
-  app.get('/api/allHoroscopes/:sign', function(req, res) {
-    var sign = req.params.sign;
-    astroJs.getAllHoroscope(sign, function(response) {
-      res.json(response);
-    });
+  app.get('/api/allHoroscopes/', function(req, res) {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      var sign = req.user.sign;
+      astroJs.getAllHoroscope(sign, function(response) {
+        res.json(response);
+      });
+    };
   });
 
   app.get('/api/todayHoroscope/:sign', function(req, res) {
