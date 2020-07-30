@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-  var Search = sequelize.define("Search", {
+  var Search = sequelize.define('Search', {
     date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
       validate: {
         isDate: true,
         notNull: {
-          msg: "Date cannot be null"
+          msg: 'Date cannot be null'
         }
       }
     },
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Description cannot be null"
+          msg: 'Description cannot be null'
         }
       }
     },
@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Mood cannot be null"
+          msg: 'Mood cannot be null'
         }
       }
     },
@@ -43,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Color cannot be null"
+          msg: 'Color cannot be null'
         }
       }
     },
@@ -52,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Lucky number cannot be null"
+          msg: 'Lucky number cannot be null'
         }
       }
     },
@@ -61,7 +61,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Lucky time cannot be null"
+          msg: 'Lucky time cannot be null'
         }
       }
     }
