@@ -13,28 +13,27 @@ module.exports = function(sequelize, DataTypes) {
         isAlphanumeric: true,
         len: [3],
         notNull: {
-          msg: "Username cannot be null",
-        },
-      },
+          msg: "Username cannot be null"
+        }
+      }
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Password cannot be null",
-        },
-      },
+          msg: "Password cannot be null"
+        }
+      }
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlpha: true,
         notNull: {
-          msg: "Name cannot be null",
-        },
-      },
+          msg: "Name cannot be null"
+        }
+      }
     },
     DOB: {
       type: DataTypes.DATEONLY,
@@ -42,19 +41,19 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isDate: true,
         notNull: {
-          msg: "Date of birth cannot be null",
-        },
-      },
+          msg: "Date of birth cannot be null"
+        }
+      }
     },
     sign: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Sign cannot be null",
-        },
-      },
-    },
+          msg: "Sign cannot be null"
+        }
+      }
+    }
   });
 
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
