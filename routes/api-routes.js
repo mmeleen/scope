@@ -1,20 +1,20 @@
 // Requiring our models and passport as we've configured it
-var db = require("../models");
-var passport = require("../config/passport");
-var astroJs = require("aztro-js");
+var db = require('../models');
+var passport = require('../config/passport');
+var astroJs = require('aztro-js');
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  app.post('/api/login', passport.authenticate('local'), function(req, res) {
     res.json(req.user);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", function(req, res) {
+  app.post('/api/signup', function(req, res) {
     db.User.create({
       username: req.body.username,
       password: req.body.password,
@@ -23,7 +23,7 @@ module.exports = function(app) {
       sign: req.body.sign,
     })
       .then(function() {
-        res.redirect(307, "/api/login");
+        res.redirect(307, '/api/login');
       })
       .catch(function(err) {
         console.log(err);
@@ -32,13 +32,13 @@ module.exports = function(app) {
   });
 
   // Route for logging user out
-  app.get("/logout", function(req, res) {
+  app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect("/");
+    res.redirect('/');
   });
 
   // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
+  app.get('/api/user_data', function(req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -53,14 +53,14 @@ module.exports = function(app) {
   });
 
   // Routes for getting horoscopes calling astroJs npm package
-  app.get("/api/allHoroscopes/:sign", function(req, res) {
+  app.get('/api/allHoroscopes/:sign', function(req, res) {
     var sign = req.params.sign;
     astroJs.getAllHoroscope(sign, function(response) {
       res.json(response);
     });
   });
 
-  app.get("/api/todayHoroscope/:sign", function(req, res) {
+  app.get('/api/todayHoroscope/:sign', function(req, res) {
     var sign = req.params.sign;
     astroJs.getTodaysHoroscope(sign, function(response) {
       res.json(response);
