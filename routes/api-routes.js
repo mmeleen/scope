@@ -23,7 +23,7 @@ module.exports = function(app) {
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
         'x-rapidapi-host': 'astrology-horoscope.p.rapidapi.com',
-        'x-rapidapi-key': 'f3476faec6mshdc886b9bdfc5fbdp12fa3ejsn32aa8f20576d',
+        'x-rapidapi-key': process.env.RAPIDAPI_KEY,
         useQueryString: true
       },
       data: {
