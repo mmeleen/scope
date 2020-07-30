@@ -7,12 +7,13 @@ $(document).ready(function() {
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("submit", function(event) {
     event.preventDefault();
+    console.log(usernameInput, passwordInput);
     var userData = {
       username: usernameInput.val().trim(),
-      password: passwordInput.val().trim(),
+      password: passwordInput.val().trim()
     };
 
-    if (!userData.email || !userData.password) {
+    if (!userData.username || !userData.password) {
       return;
     }
 
@@ -26,7 +27,7 @@ $(document).ready(function() {
   function loginUser(username, password) {
     $.post("/api/login", {
       username: username,
-      password: password,
+      password: password
     })
       .then(function() {
         window.location.replace("/members");

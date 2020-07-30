@@ -17,15 +17,16 @@ module.exports = function(app) {
   app.post("/api/signup", function(req, res) {
     db.User.create({
       username: req.body.username,
+      password: req.body.password,
       name: req.body.name,
       DOB: req.body.DOB,
       sign: req.body.sign,
-      password: req.body.password
     })
       .then(function() {
         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
+        console.log(err);
         res.status(401).json(err);
       });
   });
@@ -46,7 +47,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         username: req.user.username,
-        id: req.user.id
+        id: req.user.id,
       });
     }
   });

@@ -6,7 +6,7 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/sign.html"));
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/sign", function(req, res) {
