@@ -6,6 +6,13 @@ $(document).ready(function() {
   });
 
   $.get("/api/allHoroscopes/", function(results) {
-    console.log(results.yesterday);
+    console.log(results);
+    console.log(results.yesterday.description);
+    console.log(results.today.description);
+    console.log(results.tomorrow.description);
+
+    $("#yesterdays-description").text(results.yesterday.description);
+    $("#todays-description").text(results.today.description);
+    $("#tomorrows-description").text(results.tomorrow.description);
   });
 });
