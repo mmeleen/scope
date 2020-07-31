@@ -48,30 +48,33 @@
       </div>
     </div>
     <!-- Horoscopes -->
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#yesterday">Yesterday</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#today">Today</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#tomorrow">Tomorrow</a>
-      </li>
-    </ul>
-    <div id="myTabContent" class="tab-content">
-      <div class="tab-pane " id="yesterday">
-        <p id="yesterdays-description" class="description"></p>
-        <span class="color-oyd">Yesterdays Color </span>
+    <container>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#yesterday">Yesterday</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#today">Today</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tomorrow">Tomorrow</a>
+        </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane " id="yesterday">
+          <p id="yesterdays-description" class="description"></p>
+          <span class="color-oyd">Yesterdays Color </span>
+        </div>
+        <div class="tab-pane active" id="today">
+          <p id="todays-description"></p>
+          <span class="color-otd">Todays Color </span>
+        </div>
+        <div class="tab-pane " id="tomorrow">
+          <p id="tomorrows-description"></p>
+          <span class="color-otm">Tomorrows Color </span>
+        </div>
       </div>
-      <div class="tab-pane active" id="today">
-        <p id="todays-description"></p>
-        <span class="color-otd">Todays Color </span>
-      </div>
-      <div class="tab-pane " id="tomorrow">
-        <p id="tomorrows-description"></p>
-        <span class="color-otm">Tomorrows Color </span>
-      </div>
+    </container>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
