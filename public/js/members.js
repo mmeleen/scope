@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   $('#save').on('click', function(event) {
     event.preventDefault();
-    var savedScope = {
+    var search = {
       date: $('#').val(),
       description: $('#').val(),
       mood: $('#').val(),
@@ -26,8 +26,42 @@ $(document).ready(function() {
       lucky_number: $('#').val(),
       lucky_time: $('#').val()
     };
-    $.post('/api/saveSearch/', savedScope, function(data) {
+    
+    $.post('/api/saveSearch/', search, function(data) {
       console.log(data);
     });
+
+    //adding thre day forecast
+    $("#yesterdays-description").text(results.yesterday.description);
+    $("#todays-description").text(results.today.description);
+    $("#tomorrows-description").text(results.tomorrow.description);
+
+    // adding color blocks to page
+    let yesColor = results.yesterday.color;
+    let todColor = results.today.color;
+    let tomColor = results.tomorrow.color;
+    console.log(yesColor);
+    let colorContainerYes = $(`<div>`).css({
+      "background-color": yesColor,
+      height: "40px",
+      width: "40px",
+    });
+    $(".color-oyd").append(colorContainerYes);
+
+    console.log(todColor);
+    let colorContainerTod = $(`<div>`).css({
+      "background-color": todColor,
+      height: "40px",
+      width: "40px",
+    });
+    $(".color-otd").append(colorContainerTod);
+
+    console.log(tomColor);
+    let colorContainerTom = $(`<div>`).css({
+      "background-color": tomColor,
+      height: "40px",
+      width: "40px",
+    });
+    $(".color-otm").append(colorContainerTom);
   });
 });

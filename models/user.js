@@ -1,9 +1,9 @@
 // Require bcrypt for password hashing. Using the bcryptjs version, as the regular bcrypt module sometimes causes errors on Windows machines
-var bcrypt = require("bcryptjs");
+var bcrypt = require('bcryptjs');
 
 // Create User model
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var User = sequelize.define('User', {
     // Username must be unique
     username: {
       type: DataTypes.STRING,
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         isAlphanumeric: true,
         len: [3],
         notNull: {
-          msg: "Username cannot be null",
+          msg: 'Username cannot be null',
         },
       },
     },
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Password cannot be null",
+          msg: 'Password cannot be null',
         },
       },
     },
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Name cannot be null",
+          msg: 'Name cannot be null',
         },
       },
     },
@@ -41,7 +41,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isDate: true,
         notNull: {
-          msg: "Date of birth cannot be null",
+          msg: 'Date of birth cannot be null',
         },
       },
     },
@@ -50,7 +50,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notNull: {
-          msg: "Sign cannot be null",
+          msg: 'Sign cannot be null',
         },
       },
     },
@@ -62,7 +62,7 @@ module.exports = function(sequelize, DataTypes) {
   };
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", function(user) {
+  User.addHook('beforeCreate', function(user) {
     user.password = bcrypt.hashSync(
       user.password,
       bcrypt.genSaltSync(10),
