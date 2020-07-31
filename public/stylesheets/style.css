@@ -12,3 +12,14 @@ form.login {
   text-align: center;
   
 }
+.results-card {
+  height: auto;
+ margin-left: auto;
+ margin-right: auto;
+ margin-bottom: 30px;
+
+}
+h3{
+  display: flex;
+  align-self: center;
+}

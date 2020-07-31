@@ -24,16 +24,18 @@ $(document).ready(function () {
       $("#contents").empty();
 
       $("#results").empty();
-      console.log(response)
+    //   console.log(response);
 
       $("#results").append(card(response));
     });
   }
 //   var compatibility = data.data.Compatibility;
   function card(response) {
-      var response = response;
+      var info = JSON.parse(response);
+      var details = info.data.Compatibility.details;
+      console.log(info);
     var createCard =
-    ' <div style ="width: 90%;"  class="card results-card"><div class="card-body"><h3 class="card-title">Compatibility Results</h3><p class="card-text">' + response + '</p>';
+    ' <div style ="width: 90%;"  class="card results-card"><div class="card-body"><h3 class="card-title">Compatibility Results</h3><p class="card-text">' + details + '</p>';
     return createCard;
   }
 
