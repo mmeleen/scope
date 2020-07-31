@@ -2,3 +2,24 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+#results{
+  display: flex;
+  align-self: center;
+}
+.results-container{
+  display: flex;
+  align-self: center;
+  text-align: center;
+  
+}
+.results-card {
+  height: auto;
+ margin-left: auto;
+ margin-right: auto;
+ margin-bottom: 30px;
+
+}
+h3{
+  display: flex;
+  align-self: center;
+}
