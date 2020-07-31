@@ -2,3 +2,13 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+#results{
+  display: flex;
+  align-self: center;
+}
+.results-container{
+  display: flex;
+  align-self: center;
+  text-align: center;
+  
+}
