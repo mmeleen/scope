@@ -1,12 +1,11 @@
 $(document).ready(function() {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
+  const pastSearch = $(".scope-list");
+
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.name);
   });
-  var yesColor;
-  var todColor;
-  var tomColor;
 
   $.get("/api/allHoroscopes/", function(results) {
     console.log(results);
@@ -41,9 +40,9 @@ $(document).ready(function() {
     $("#mood-tm").text("Tomorrows Mood: " + results.tomorrow.mood);
 
     // adding color blocks to page
-    yesColor = results.yesterday.color;
-    todColor = results.today.color;
-    tomColor = results.tomorrow.color;
+    let yesColor = results.yesterday.color;
+    let todColor = results.today.color;
+    let tomColor = results.tomorrow.color;
 
     console.log(yesColor);
     let colorContainerYes = $(`<div>`).css({
@@ -76,7 +75,7 @@ $(document).ready(function() {
   //start saving logic
   $("#yes-save").on("click", function(event) {
     event.preventDefault();
-    var search = {
+    let search = {
       date: $("#yesterdays-date").text(),
       description: $("#yesterdays-description").text(),
       mood: $("#mood-yd").text(),
@@ -84,16 +83,13 @@ $(document).ready(function() {
       lucky_number: $("#lucky-number-yd").text(),
       lucky_time: $("#lucky-time-yd").text(),
     };
-
-    $.post("/api/saveSearch", { search: search }, function(data) {
-      console.log(data);
-    });
+    saveToDB(search);
   });
 
   $("#tod-save").on("click", function(event) {
     event.preventDefault();
 
-    var todsearch = {
+    let todsearch = {
       date: $("#todays-date").text(),
       description: $("#todays-description").text(),
       mood: $("#mood-td").text(),
@@ -102,14 +98,11 @@ $(document).ready(function() {
       lucky_time: $("#lucky-time-td").text(),
     };
 
-    $.post("/api/saveSearch", { search: todsearch }, function(data) {
-      console.log(data);
-    });
+    saveToDB(todsearch);
   });
 
   $("#tom-save").on("click", function(event) {
     event.preventDefault();
-    console.log("hellloooo");
     var search = {
       date: $("#tomorrows-date").text(),
       description: $("#tomorrows-description").text(),
@@ -119,8 +112,29 @@ $(document).ready(function() {
       lucky_time: $("#lucky-time-tm").text(),
     };
 
+    saveToDB(search);
+  });
+
+  //function for posting to db
+  function saveToDB(search) {
     $.post("/api/saveSearch", { search: search }, function(data) {
-      console.log(data);
+      renderPastSearches(data);
     });
+  }
+
+  //function to append the past searches to the page
+  function renderPastSearches(data) {
+    pastSearch.html("");
+    data.forEach((item) => {
+      pastSearch.append(` <div class="card">
+      <div class="card-body">
+          <li>${item.description}</li>
+      </div>
+    </div>`);
+    });
+  }
+
+  $.get("/api/searches", { search: search }, function(data) {
+    renderPastSearches(data);
   });
 });
