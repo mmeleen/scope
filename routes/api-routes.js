@@ -90,31 +90,22 @@ module.exports = function(app) {
     }
   });
 
-  app.post("/api/saveSearch", function(req, res) {
-    var reqDate = req.body.search.date;
-    var reqDescription = req.body.search.description;
-    var reqMood = req.body.search.mood;
-    var reqColor = req.body.search.color;
-    var reqLucky_number = req.body.search.lucky_number;
-    var reqLucky_time = req.body.search.lucky_time;
-
-    db.Search.create({
-      date: reqDate,
-      description: reqDescription,
-      mood: reqMood,
-      color: reqColor,
-      lucky_number: reqLucky_number,
-      lucky_time: reqLucky_time,
-      UserId: req.user.id,
-    })
-      .then(function(response) {
-        res.status(200);
-        res.json(response);
-      })
-      .catch(function(err) {
-        console.log(err);
-        res.status(401).json(err);
+  app.post("/api/saveSearch", async function(req, res) {
+    try {
+      const response = await db.Search.create({
+        date: req.body.search.date,
+        description: req.body.search.description,
+        mood: req.body.search.mood,
+        color: req.body.search.color,
+        lucky_number: req.body.search.lucky_number,
+        lucky_time: req.body.search.lucky_time,
+        UserId: req.user.id,
       });
+      findAllRecords(req, res);
+    } catch (error) {
+      console.log(err);
+      res.status(401).json(err);
+    }
   });
 
   // return user object from database
@@ -126,15 +117,28 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/searches", function(req, res, err) {
-    db.Search.findAll({
-      where: {
-        UserId: req.user.id,
-      },
-    })
-      .then(function(results) {
-        res.json(results);
-      })
-      .catch(err);
+  app.get("/api/searches", async function(req, res) {
+    try {
+      findAllRecords(req, res);
+      console.log(res);
+      res.json(res);
+    } catch (error) {
+      res.status(401).json(error);
+    }
   });
 };
+
+async function findAllRecords(req, res) {
+  db.Search.findAll({
+    where: {
+      UserId: req.user.id,
+    },
+  })
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((err) => {
+      console.log(err);
+      return err;
+    });
+}
