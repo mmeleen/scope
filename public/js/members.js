@@ -28,24 +28,30 @@ $(document).ready(function() {
     $("#lucky-number-td").text(results.today.lucky_number);
     $("#lucky-number-tm").text(results.tomorrow.lucky_number);
     //lucky time
-    $("#lucky-time-yd").text(results.yesterday.lucky_time);
-    $("#lucky-time-td").text(results.today.lucky_time);
-    $("#lucky-time-tm").text(results.tomorrow.lucky_time);
+    $("#lucky-time-yd").text(
+      "Yesterdays Lucky Time: " + results.yesterday.lucky_time
+    );
+    $("#lucky-time-td").text("Todays Lucky Time: " + results.today.lucky_time);
+    $("#lucky-time-tm").text(
+      "Tomorrows Lucky Time: " + results.tomorrow.lucky_time
+    );
     //lucky time
-    $("#mood-yd").text(results.yesterday.mood);
-    $("#mood-td").text(results.today.mood);
-    $("#mood-tm").text(results.tomorrow.mood);
+    $("#mood-yd").text("Yesterdays Mood: " + results.yesterday.mood);
+    $("#mood-td").text("Todays Mood: " + results.today.mood);
+    $("#mood-tm").text("Tomorrows Mood: " + results.tomorrow.mood);
 
     // adding color blocks to page
     yesColor = results.yesterday.color;
     todColor = results.today.color;
     tomColor = results.tomorrow.color;
+
     console.log(yesColor);
     let colorContainerYes = $(`<div>`).css({
       "background-color": yesColor,
       height: "40px",
       width: "40px",
     });
+    $("#yesterdays-color").text(yesColor);
     $("#color-oyd").append(colorContainerYes);
 
     console.log(todColor);
@@ -54,6 +60,7 @@ $(document).ready(function() {
       height: "40px",
       width: "40px",
     });
+    $("#todays-color").text(todColor);
     $("#color-otd").append(colorContainerTod);
 
     console.log(tomColor);
@@ -62,23 +69,58 @@ $(document).ready(function() {
       height: "40px",
       width: "40px",
     });
+    $("#tomorrows-color").text(tomColor);
     $("#color-otm").append(colorContainerTom);
   });
-});
-$("#yes-save").on("click", function(event) {
-  event.preventDefault();
-  var search = {
-    date: $("#yesterdays-date").text(),
-    description: $("#yesterdays-description").text(),
-    mood: $("#mood-yd").text(),
-    color: "Orange",
-    lucky_number: $("#lucky-number-yd").text(),
-    lucky_time: $("#lucky-time-yd").text(),
-  };
-  console.log(search);
-  // let sSearch = JSON.stringify(search);
 
-  $.post("/api/saveSearch", { search: search }, function(data) {
-    console.log(data);
+  //start saving logic
+  $("#yes-save").on("click", function(event) {
+    event.preventDefault();
+    var search = {
+      date: $("#yesterdays-date").text(),
+      description: $("#yesterdays-description").text(),
+      mood: $("#mood-yd").text(),
+      color: $("#yesterdays-color").text(),
+      lucky_number: $("#lucky-number-yd").text(),
+      lucky_time: $("#lucky-time-yd").text(),
+    };
+
+    $.post("/api/saveSearch", { search: search }, function(data) {
+      console.log(data);
+    });
+  });
+
+  $("#tod-save").on("click", function(event) {
+    event.preventDefault();
+
+    var todsearch = {
+      date: $("#todays-date").text(),
+      description: $("#todays-description").text(),
+      mood: $("#mood-td").text(),
+      color: $("#todays-color").text(),
+      lucky_number: $("#lucky-number-td").text(),
+      lucky_time: $("#lucky-time-td").text(),
+    };
+
+    $.post("/api/saveSearch", { search: todsearch }, function(data) {
+      console.log(data);
+    });
+  });
+
+  $("#tom-save").on("click", function(event) {
+    event.preventDefault();
+    console.log("hellloooo");
+    var search = {
+      date: $("#tomorrows-date").text(),
+      description: $("#tomorrows-description").text(),
+      mood: $("#mood-tm").text(),
+      color: $("#tomorrows-color").text(),
+      lucky_number: $("#lucky-number-tm").text(),
+      lucky_time: $("#lucky-time-tm").text(),
+    };
+
+    $.post("/api/saveSearch", { search: search }, function(data) {
+      console.log(data);
+    });
   });
 });
