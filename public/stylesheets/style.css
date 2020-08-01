@@ -2,24 +2,81 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-#results{
-  display: flex;
-  align-self: center;
+.container-fluid{
+  background: rgb(56, 9, 10);
 }
-.results-container{
-  display: flex;
-  align-self: center;
+.navbar{
+  margin-bottom: 0px;
+  border: none;
+}
+.navbar-default{
+  background: rgb(56, 9, 10)!important;
+}
+.navbar-brand:link{
+  font-family: monospace!important;
+  color: rgb(232, 93, 4)!important;
+}
+
+#matchpage{
+  font-family: monospace;
   text-align: center;
-  
+background: rgb(56, 9, 10);
+color: rgb(232, 93, 4);
+border: none;
 }
 .results-card {
   height: auto;
  margin-left: auto;
  margin-right: auto;
  margin-bottom: 30px;
-
 }
-h3{
+.thisclass{
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+.space{ 
+  display: flex;
+  }
+.yoursign{
   display: flex;
   align-self: center;
+  align-content: flex-start;
+  color: rgb(232, 93, 4);
+  font-size: 28px;
+}
+.partnersign{
+  display: flex;
+  align-self: center;
+  align-content: flex-start;
+  color: rgb(232, 93, 4);
+  font-size: 28px;
+}
+.yourImg{
+  display: flex;
+  justify-content: start;
+}
+.theirImg{
+  display: flex;
+  justify-content: end;
+}
+.match{
+  display: flex;
+  font-size: 28px;
+  align-self: start;
+  text-align: center;
+}
+.comp{
+  display: flex;
+  justify-content: center;
+}
+.card-header{
+  display: flex;
+  align-self: center;
+  font-size: 34px;
+  text-decoration: underline;
+}
+.card-text{
+  font-size: 24px;
+  text-align: center;
 }
