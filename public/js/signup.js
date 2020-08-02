@@ -16,7 +16,7 @@ $(document).ready(function() {
       name: nameInput.val().trim(),
       DOB: DOBInput.val().trim(),
     };
-    console.log(userData);
+    // console.log(userData);
     if (
       !userData.username ||
       !userData.password ||
@@ -32,16 +32,17 @@ $(document).ready(function() {
       userData.name,
       userData.DOB
     );
-    usernameInput.val('');
-    nameInput.val('');
-    passwordInput.val('');
-    DOBInput.val('');
+    // usernameInput.val('');
+    // nameInput.val('');
+    // passwordInput.val('');
+    // DOBInput.val('');
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
 
   function signUpUser(username, password, name, DOB) {
+    // console.log('signing up user...');
     $.post('/api/signup', {
       username: username,
       password: password,
@@ -56,8 +57,8 @@ $(document).ready(function() {
   }
 
   function handleLoginErr(err) {
-    console.log(err.responseJSON);
-    $('#alert .msg').text(err.responseJSON.errors[0].message);
+    // console.log(err.responseJSON);
+    $('#alert .msg').text((err.responseJSON).split('.').pop());
     $('#alert').fadeIn(500);
   }
 });

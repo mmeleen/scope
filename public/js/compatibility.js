@@ -39,7 +39,7 @@ $(document).ready(function () {
     var yourSign = info.data.user['Sun Sign'];
     var partnerImg = JSON.stringify(info.data.partner.Image);
     var partnerSign = info.data.partner['Sun Sign'];
-    console.log(info);
+    // console.log(info);
     var createCard =
       ' <div style ="width: 70%;" class="card results-card"><container class= "comp"><div class="card-header">Compatibility Results</div></container><div class="card-body"><container class = "space"><div class="thisclass"><img class = "yourImg" src='+ yourSignImg + 'alt="sign"></div><div class = "yoursign">' + yourSign + '</div><div class = "match"> ' + heading + '</div><div class =partnersign>' + partnerSign + '</div><div class ="thisclass"><img class "theirImg" src='+ partnerImg + 'alt="sign"></div></container><p class="card-text">' +
       details +
