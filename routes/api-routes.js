@@ -4,6 +4,16 @@ var passport = require('../config/passport');
 var astroJs = require('aztro-js');
 var axios = require('axios');
 
+function isUniqueSearch(date) {
+  return db.Search.count({ where: { date: date } })
+    .then(function (count) {
+      if (parseInt(count) !== 0) {
+        return false;
+      }
+      return true;
+    });
+}
+
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -90,6 +100,7 @@ module.exports = function (app) {
   });
 
   app.post('/api/saveSearch', function (req, res) {
+
     db.Search.create({
       date: req.body.search.date,
       description: req.body.search.description,
@@ -109,11 +120,9 @@ module.exports = function (app) {
   });
 
   // return user object from database
-  app.post('/api/search/:username', function (req, res) {
-    db.sequelize.findOne({ where: { username: req.params.username } }, function (
-      results
-    ) {
-      res.json(results);
+  app.get('/api/search/:date', function (req, res) {
+    isUniqueSearch(req.params.date).then(function (isUnique) {
+      res.json(isUnique);
     });
   });
 

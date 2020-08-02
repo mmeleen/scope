@@ -25,13 +25,13 @@ $(document).ready(function () {
     $('#lucky-number-td').text(results.today.lucky_number);
     $('#lucky-number-tm').text(results.tomorrow.lucky_number);
     //lucky time
-    $('#lucky-time-yd').text('Yesterdays Lucky Time: ' + results.yesterday.lucky_time);
-    $('#lucky-time-td').text('Todays Lucky Time: ' + results.today.lucky_time);
-    $('#lucky-time-tm').text('Tomorrows Lucky Time: ' + results.tomorrow.lucky_time);
+    $('#lucky-time-yd').text(results.yesterday.lucky_time);
+    $('#lucky-time-td').text(results.today.lucky_time);
+    $('#lucky-time-tm').text(results.tomorrow.lucky_time);
     //lucky time
-    $('#mood-yd').text('Yesterdays Mood: ' + results.yesterday.mood);
-    $('#mood-td').text('Todays Mood: ' + results.today.mood);
-    $('#mood-tm').text('Tomorrows Mood: ' + results.tomorrow.mood);
+    $('#mood-yd').text(results.yesterday.mood);
+    $('#mood-td').text(results.today.mood);
+    $('#mood-tm').text(results.tomorrow.mood);
 
     // adding color blocks to page
     var yesColor = results.yesterday.color;
@@ -111,8 +111,17 @@ $(document).ready(function () {
 
   //function for posting to db
   function saveToDB(search) {
-    $.post('/api/saveSearch', { search: search }, function () {
-      renderPastSearches();
+
+    $.get('api/search/' + search.date, function (response) {
+      if (response) {
+        $.post('/api/saveSearch', { search: search }, function () {
+          renderPastSearches();
+        });
+      } else {
+        // can replace with alert msg for user
+        console.log('saved search is not unique');
+      }
+
     });
   }
 
@@ -121,7 +130,16 @@ $(document).ready(function () {
     $.get('/api/searches', function (data) {
       pastSearch.html('');
       data.forEach(function (item) {
-        pastSearch.prepend('<div class="card"><div class="card-body">' + item.description + '</div></div>');
+        console.log(item);
+        pastSearch.prepend(
+          '<div class="card mx-auto" style="width: 80%; background-color: #f0f5f9;">' +
+          '<div class="card-title past-date">' +
+          item.date +
+          '</div>' +
+          '<div class="card-body past-description">' +
+          item.description +
+          '</div></div>'
+        );
       });
     });
   }
