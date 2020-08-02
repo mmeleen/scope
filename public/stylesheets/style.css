@@ -2,81 +2,165 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-.container-fluid{
+.container-fluid {
   background: rgb(56, 9, 10);
 }
-.navbar{
+.navbar {
   margin-bottom: 0px;
   border: none;
+  background-color: #f0f5f9;
 }
-.navbar-default{
-  background: rgb(56, 9, 10)!important;
-}
-.navbar-brand:link{
-  font-family: monospace!important;
-  color: rgb(232, 93, 4)!important;
+.navbar-brand {
+  font-size: 30px;
+  font-weight: 700;
 }
 
-#matchpage{
+.navbar-nav {
+  font-weight: 500;
+}
+
+#matchpage {
   font-family: monospace;
   text-align: center;
-background: rgb(56, 9, 10);
-color: rgb(232, 93, 4);
-border: none;
+  background: rgb(56, 9, 10);
+  color: rgb(232, 93, 4);
+  border: none;
 }
 .results-card {
   height: auto;
- margin-left: auto;
- margin-right: auto;
- margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
-.thisclass{
+.thisclass {
   display: flex;
   flex-direction: row;
   align-content: space-between;
 }
-.space{ 
+.space {
   display: flex;
-  }
-.yoursign{
+}
+.yoursign {
   display: flex;
   align-self: center;
   align-content: flex-start;
   color: rgb(232, 93, 4);
   font-size: 28px;
 }
-.partnersign{
+.partnersign {
   display: flex;
   align-self: center;
   align-content: flex-start;
   color: rgb(232, 93, 4);
   font-size: 28px;
 }
-.yourImg{
+.yourImg {
   display: flex;
   justify-content: start;
 }
-.theirImg{
+.theirImg {
   display: flex;
   justify-content: end;
 }
-.match{
+.match {
   display: flex;
   font-size: 28px;
   align-self: start;
   text-align: center;
 }
-.comp{
+.comp {
   display: flex;
   justify-content: center;
 }
-.card-header{
+.card-header {
   display: flex;
   align-self: center;
   font-size: 34px;
   text-decoration: underline;
 }
-.card-text{
+.card-text {
   font-size: 24px;
+  text-align: center;
+}
+/* signup */
+body {
+  background-image: url(../assets/stars.jpg);
+  align-self: center;
+  background-size: cover;
+}
+.header-signup,
+.login-option,
+.signup-btn {
+  color: #f0f5f9;
+}
+.header-signup {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* members */
+.scopes,
+.past-search-section,
+.member-header,
+.navbar {
+  font-family: "Rajdhani", sans-serif;
+}
+
+.scopes {
+  margin: 30px;
+  background-color: #f0f5f9;
+  align-items: center;
+}
+.date {
+  font-weight: 600;
+  margin-top: 25px;
+  text-align: end;
+}
+.past-search-section {
+  text-align: center;
+  align-self: center;
+}
+.member-header {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+  color: #f0f5f9;
+}
+.label {
+  font-weight: 600;
+  display: inline;
+}
+.color-name {
+  display: inline;
+}
+.past-date {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.past-search-header {
+  font-weight: 700;
+  margin: 30px;
+  color: #f0f5f9;
+}
+
+.past-description {
+  font-weight: 600;
+}
+
+.sign-pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 35px;
+  width: 10%;
+  height: 30%;
+}
+button {
+  background-color: #03045e;
+  color: #f0f5f9;
+  border-color: #03045e;
   text-align: center;
 }
