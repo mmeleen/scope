@@ -113,8 +113,15 @@ $(document).ready(function() {
 
   //function for posting to db
   function saveToDB(search) {
-    $.post('/api/saveSearch', { search: search }, function() {
-      renderPastSearches();
+    $.get('api/search/'+search.date, function(response){
+      if (response){
+        $.post('/api/saveSearch', { search: search }, function() {
+          renderPastSearches();
+        });
+      } else {
+        // can replace with alert msg for user
+        console.log('saved search is not unique');
+      }
     });
   }
 
