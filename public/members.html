@@ -32,12 +32,24 @@
   </nav>
   <!-- Welcome (Member Name) -->
   <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-9 col-md-offset-3">
+        <h2>Welcome <span id="member-name"></span>!</h2>
+        <h3>Here is your 3 day Horoscope Forecast:</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Sign -->
+  <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span>!</h2>
-        <h3>Your sign: <span class="member-sign"></h3>
-        <div><img id="member-img" src="" alt=""></div>
-        <h3>Here is your 3 day Horoscope Forecast</h3>
+      <div class="col-xs-2 col-md-offset-3">
+        <img id="member-img" class="img-fluid mx-3" style="max-height: 150px" src="" alt="">
+      </div>
+      <div class="col-xs-3">
+        <div class="mx-3">
+          <h5 class="mt-3">Your sign:</h5>
+          <h3 class="my-3" id="member-sign"></h3>
+        </div>
       </div>
     </div>
   </div>

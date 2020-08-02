@@ -4,8 +4,8 @@ $(document).ready(function () {
   var pastSearch = $('.scope-list');
 
   $.get('/api/user_data').then(function (data) {
-    $('.member-name').text(data.name);
-    $('.member-sign').text(data.sign);
+    $('#member-name').text(data.name);
+    $('#member-sign').text(data.sign);
     $('#member-img').attr('src', 'assets/' + data.sign + '.png');
   });
 
@@ -121,7 +121,7 @@ $(document).ready(function () {
     $.get('/api/searches', function (data) {
       pastSearch.html('');
       data.forEach(function (item) {
-        pastSearch.append('<div class="card"><div class="card-body">' + item.description + '</div></div>');
+        pastSearch.prepend('<div class="card"><div class="card-body">' + item.description + '</div></div>');
       });
     });
   }
