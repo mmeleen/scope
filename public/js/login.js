@@ -7,7 +7,7 @@ $(document).ready(function() {
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on('submit', function(event) {
     event.preventDefault();
-    console.log(usernameInput, passwordInput);
+    // console.log(usernameInput, passwordInput);
     var userData = {
       username: usernameInput.val().trim(),
       password: passwordInput.val().trim(),
@@ -33,8 +33,9 @@ $(document).ready(function() {
         window.location.replace('/members');
         // If there's an error, log the error
       })
-      .catch(function(err) {
-        console.log(err);
+      .catch(function() {
+        $('#alert .msg').text('Invalid Username or Password');
+        $('#alert').fadeIn(500);
       });
   }
 });
