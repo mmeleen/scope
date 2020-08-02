@@ -1,22 +1,20 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   var pastSearch = $('.scope-list');
 
-  $.get('/api/user_data').then(function(data) {
+  $.get('/api/user_data').then(function (data) {
     $('.member-name').text(data.name);
+    $('.member-sign').text(data.sign);
+    $('#member-img').attr('src', 'assets/' + data.sign + '.png');
   });
 
-  $.get('/api/allHoroscopes/', function(results) {
+  $.get('/api/allHoroscopes/', function (results) {
     // console.log(results);
 
     $('#yesterdays-date').text(results.yesterday.current_date);
     $('#todays-date').text(results.today.current_date);
     $('#tomorrows-date').text(results.tomorrow.current_date);
-
-    $('#yesterdays-description').text(results.yesterday.description);
-    $('#todays-description').text(results.today.description);
-    $('#tomorrows-description').text(results.tomorrow.description);
 
     //adding three day forecast
     $('#yesterdays-description').text(results.yesterday.description);
@@ -69,7 +67,7 @@ $(document).ready(function() {
   });
 
   //start saving logic
-  $('#yes-save').on('click', function(event) {
+  $('#yes-save').on('click', function (event) {
     event.preventDefault();
     var search = {
       date: $('#yesterdays-date').text(),
@@ -82,7 +80,7 @@ $(document).ready(function() {
     saveToDB(search);
   });
 
-  $('#tod-save').on('click', function(event) {
+  $('#tod-save').on('click', function (event) {
     event.preventDefault();
 
     var todsearch = {
@@ -97,7 +95,7 @@ $(document).ready(function() {
     saveToDB(todsearch);
   });
 
-  $('#tom-save').on('click', function(event) {
+  $('#tom-save').on('click', function (event) {
     event.preventDefault();
     var search = {
       date: $('#tomorrows-date').text(),
@@ -113,17 +111,17 @@ $(document).ready(function() {
 
   //function for posting to db
   function saveToDB(search) {
-    $.post('/api/saveSearch', { search: search }, function() {
+    $.post('/api/saveSearch', { search: search }, function () {
       renderPastSearches();
     });
   }
 
   //function to append the past searches to the page
   function renderPastSearches() {
-    $.get('/api/searches', function(data) {
+    $.get('/api/searches', function (data) {
       pastSearch.html('');
-      data.forEach(function(item) {
-        pastSearch.append('<div class="card"><div class="card-body">'+item.description+'</div></div>');
+      data.forEach(function (item) {
+        pastSearch.append('<div class="card"><div class="card-body">' + item.description + '</div></div>');
       });
     });
   }
