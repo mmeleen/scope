@@ -147,6 +147,7 @@ body {
 
 .scopes {
   margin: 30px;
+  padding: 30px;
   background-color: #f0f5f9;
   align-items: center;
   overflow: scroll;
@@ -185,16 +186,15 @@ body {
   margin: 30px;
   color: #f0f5f9;
 }
-
 .past-description {
   font-weight: 600;
 }
-
 .sign-pic {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 35px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   width: 10%;
   height: 30%;
 }
@@ -206,13 +206,18 @@ body {
 }
 .scope-list {
   max-height: 500px;
-  overflow: scroll;
+  padding-inline-start: 0px;
+  padding-bottom: 25px;
+  /* overflow: scroll; */
 }
-
+.sign-heading {
+  font-weight: 600;
+  text-align: center;
+  color: #03045e;
+}
 label {
   color: white;
 }
-
 .theday {
   font-size: 25px;
   font-weight: 500;
