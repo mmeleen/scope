@@ -35,16 +35,39 @@ $(document).ready(function () {
     var info = JSON.parse(response);
     var details = info.data.Compatibility.details;
     var heading = info.data.Compatibility.heading;
-    var yourSignImg = JSON.stringify(info.data.user.Image);
     var yourSign = info.data.user['Sun Sign'];
-    var partnerImg = JSON.stringify(info.data.partner.Image);
     var partnerSign = info.data.partner['Sun Sign'];
+
+    console.log(heading);
+
     // console.log(info);
-    var createCard =
-      ' <div style ="width: 70%;" class="card results-card"><container class= "comp"><div class="card-header">Compatibility Results</div></container><div class="card-body"><container class = "space"><div class="thisclass"><img class = "yourImg" src='+ yourSignImg + 'alt="sign"></div><div class = "yoursign">' + yourSign + '</div><div class = "match"> ' + heading + '</div><div class =partnersign>' + partnerSign + '</div><div class ="thisclass"><img class "theirImg" src='+ partnerImg + 'alt="sign"></div></container><p class="card-text">' +
-      details +
-      '</p>';
-    return createCard;
+    $('#compat-heading').text(heading);
+    $('#compat-heading').css('font-color', 'white');
+    $('#your-sign').text(yourSign);
+    $('#their-sign').text(partnerSign);
+    $('#your-sign-img').attr('src', 'assets/' + yourSign + '.png');
+    $('#your-sign-img').attr('alt', 'Sign: ' + yourSign);
+    $('#their-sign-img').attr('src', 'assets/' + partnerSign + '.png');
+    $('#their-sign-img').attr('alt', 'Sign: ' + partnerSign);
+    $('#compat-details').text(details);
+
+    if (heading === 'An Excellent Match') {
+      $('#compat-heading-div').css('color', 'green');
+    } else if (heading === 'A Poor Match') {
+      $('#compat-heading-div').css('color', 'red');
+    } else if (heading === 'An Easy Match') {
+      $('#compat-heading-div').css('color', 'green');
+    } else if (heading === 'A Difficult Match') {
+      $('#compat-heading-div').css('color', 'orange');
+    } else if (heading === 'A Special Match') {
+      $('#compat-heading-div').css('color', 'blue');
+    } else if (heading === 'A Great Match') {
+      $('#compat-heading-div').css('color', 'purple');
+    } else {
+      $('#compat-heading-div').css('color', 'coral');
+    }
+
+    return;
   }
 
   $('#get-results').on('keypress click', function (event) {
