@@ -2,7 +2,206 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+<<<<<<< HEAD
 container {
   align-content: center;
   margin-left: 10px;
 }
+=======
+body {
+  background-image: url(../assets/starsSquare.jpg);
+  align-self: center;
+  background-size: cover;
+  height: 100%;
+}
+
+.container-fluid {
+  background: rgb(56, 9, 10);
+}
+.navbar {
+  margin-bottom: 0px;
+  border: none;
+  background-color: #f0f5f9 !important;
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 35px;
+  /* Fallback: Set a background color. */
+  background-color: #03045e;
+
+  /* Create the gradient. */
+  background-image: linear-gradient(
+    #83e377,
+    #80ffdb,
+    #64dfdf,
+    #48bfe3,
+    #5390d9,
+    #03045e
+  );
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-nav {
+  font-weight: 500;
+}
+
+/* signup */
+
+.header-signup,
+.login-option,
+.signup-option,
+.login-header {
+  color: #f0f5f9;
+}
+.header-signup,
+.login-header {
+  margin-top: 100px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+  color: #f0f5f9;
+}
+/* login */
+.login-btn,
+.signup-btn {
+  background-color: #f0f5f9;
+  color: #03045e;
+  border-color: #f0f5f9;
+  border-radius: 3px;
+}
+
+/* members */
+.scopes,
+.compat,
+.past-search-section,
+.member-header,
+.compat-header,
+.navbar,
+.login-header,
+.header-signup {
+  font-family: "Rajdhani", sans-serif;
+}
+
+.scopes,
+.compat {
+  margin: 30px;
+  padding: 30px;
+  background-color: #f0f5f9;
+  align-items: center;
+  /* overflow: scroll; */
+}
+.date {
+  font-weight: 600;
+  margin-top: 25px;
+  text-align: end;
+}
+.past-search-section {
+  text-align: center;
+  align-self: center;
+}
+.member-header, 
+.compat-header {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+  color: #f0f5f9;
+}
+.label {
+  font-weight: 600;
+  display: inline;
+}
+.color-name {
+  display: inline;
+}
+.past-date {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.past-search-header {
+  font-weight: 700;
+  margin: 30px;
+  color: #f0f5f9;
+}
+.past-description {
+  font-weight: 600;
+}
+.sign-pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 10%;
+  height: 30%;
+}
+.save {
+  background-color: #03045e;
+  color: #f0f5f9;
+  border-color: #03045e;
+  text-align: right;
+}
+.scope-list {
+  /* max-height: 500px; */
+  padding-inline-start: 0px;
+  padding-bottom: 25px;
+  /* overflow: scroll; */
+}
+.sign-heading {
+  font-weight: 600;
+  text-align: center;
+  color: #03045e;
+}
+label {
+  color: white;
+}
+.theday {
+  font-size: 25px;
+  font-weight: 500;
+  color: #03045e;
+}
+
+/* compatibility */
+.compat-label {
+  color: #03045e;
+  margin-bottom: 0.25rem;
+}
+.compat-form-group {
+  margin-bottom: 0.5rem;
+}
+.compat-sign-pic {
+  height: 120px;
+  max-width: 120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#get-results {
+  background-color: #03045e;
+  color: #f0f5f9;
+  border-color: #03045e;
+  text-align: center;
+  font-size: 20px;
+}
+#compat-heading {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+#compat-details {
+  text-align: center;
+  font-size: 18px;
+}
+>>>>>>> 8b44e684b4c6b5510196a0590a806b863eeffd2e

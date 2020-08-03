@@ -1,52 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Passport Authentication</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
-    />
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-      crossorigin="anonymous"
-    ></script>
-    <link href="stylesheets/style.css" rel="stylesheet" />
-  </head>
+<head>
+  <title>Scope</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <body>
-    <!-- NavBar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/logout">
-            Logout
-          </a>
-        </div>
+  <!-- bootstrap style -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link href="stylesheets/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- NavBar -->
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="/">SCOPE</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/compatibility">Compatibility</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Welcome (Member Name) -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-3 member-header">
+        <h2>Welcome <span id="member-name"></span></h2>
+        <h3>Here is your 3 day Horoscope Forecast</h3>
       </div>
-    </nav>
-    <!-- Welcome (Member Name) -->
+    </div>
+  </div>
+  <!-- Horoscopes -->
+  <div class="jumbotron scopes">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <h2>Welcome <span class="member-name"></span></h2>
-          <h3>Here is your 3 day Horoscope Forecast</h3>
+      <h2 class="sign-heading">Your sign: <span id="member-sign"></h2>
+      <img id="member-img" class="sign-pic" src="" alt="" />
+      <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link theday" data-toggle="tab" href="#yesterday">Yesterday</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active theday" data-toggle="tab" href="#today">Today</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link theday" data-toggle="tab" href="#tomorrow">Tomorrow</a>
+        </li>
+      </ul>
+
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane " id="yesterday">
+          <h2 id="yesterdays-date" class="date"></h2>
+          <div>
+            <h3 class="description-header">Yesterday's Scope</h3>
+            <p id="yesterdays-description" class="description"></p>
+          </div>
+          <span id="color-oyd" class="color">
+            <p class="label">Yesterday's Color:</p>
+            <p id="yesterdays-color" class="color-name"></p>
+          </span>
+          <p class="label">Yesterday's Lucky Number:</p>
+          <p id="lucky-number-yd" class="lucky-number"></p>
+          <p class="label">Yesterday's Luck Time:</p>
+          <p id="lucky-time-yd" class="lucky-time"></p>
+          <p class="label">Yesterday's Mood:</p>
+          <p id="mood-yd" class="mood"></p>
+          <button class="save" id="yes-save" type="submit">
+            Save Yesterday's Scope
+          </button>
+        </div>
+        <div class="tab-pane active" id="today">
+          <h2 id="todays-date" class="date"></h2>
+          <div>
+            <h3 class="description-header">Today's Scope</h3>
+            <p id="todays-description"></p>
+          </div>
+
+          <span id="color-otd" class="color">
+            <p class="label">Today's Color:</p>
+            <p id="todays-color" class="color-name"></p>
+          </span>
+          <p class="label">Today's Lucky Number:</p>
+          <p id="lucky-number-td" class="lucky-number"></p>
+          <p class="label">Today's Lucky Time:</p>
+          <p id="lucky-time-td" class="lucky-time"></p>
+          <p class="label">Today's Mood:</p>
+          <p id="mood-td" class="mood"></p>
+          <button class="save" id="tod-save" type="submit">
+            Save Today's Scope
+          </button>
+        </div>
+        <div class="tab-pane " id="tomorrow">
+          <h2 id="tomorrows-date" class="date"></h2>
+          <div>
+            <h3 class="description-header">Tomorrow's Scope</h3>
+            <p id="tomorrows-description"></p>
+          </div>
+
+          <span id="color-otm" class="color">
+            <p class="label">Tomorrow's Color:</p>
+            <p id="tomorrows-color" class="color-name"></p>
+          </span>
+          <p class="label">Tomorrow's Lucky Number:</p>
+          <p id="lucky-number-tm" class="lucky-number"></p>
+          <p class="label">Tomorrow's Lucky Time:</p>
+          <p id="lucky-time-tm" class="lucky-time"></p>
+          <p class="label">Tomorrow's Mood:</p>
+          <p id="mood-tm" class="mood"></p>
+          <button class="save" id="tom-save" class="mx-auto" type="submit">
+            Save Tomorrow's Scope
+          </button>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     <!-- Horoscopes -->
     <container>
       <ul class="nav nav-tabs">
@@ -76,8 +157,23 @@
       </div>
     </container>
     </div>
+=======
+  </div>
+  <hr />
+  <div class="container past-search-section">
+    <h2 class="past-search-header">Past Scopes</h2>
+    <ul class="scope-list"></ul>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/members.js"></script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/members.js"></script>
+</body>
+>>>>>>> 8b44e684b4c6b5510196a0590a806b863eeffd2e
+
 </html>
