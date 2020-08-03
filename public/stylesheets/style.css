@@ -2,14 +2,8 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-<<<<<<< HEAD
-container {
-  align-content: center;
-  margin-left: 10px;
-}
-=======
 body {
-  background-image: url(../assets/starsSquare.jpg);
+  background-image: url(../assets/ScopeBackground.jpg);
   align-self: center;
   background-size: cover;
   height: 100%;
@@ -51,6 +45,10 @@ body {
 
 .navbar-nav {
   font-weight: 500;
+}
+.logo-image {
+  height: 45%;
+  width: 45%;
 }
 
 /* signup */
@@ -107,7 +105,7 @@ body {
   text-align: center;
   align-self: center;
 }
-.member-header, 
+.member-header,
 .compat-header {
   margin-top: 30px;
   text-align: center;
@@ -204,4 +202,3 @@ label {
   text-align: center;
   font-size: 18px;
 }
->>>>>>> 8b44e684b4c6b5510196a0590a806b863eeffd2e
