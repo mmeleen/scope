@@ -4,8 +4,8 @@ var passport = require('../config/passport');
 var astroJs = require('aztro-js');
 var axios = require('axios');
 
-function isUniqueSearch(date) {
-  return db.Search.count({ where: { date: date } })
+function isUniqueSearch(date, id) {
+  return db.Search.count({ where: { date: date, userId: id } })
     .then(function (count) {
       if (parseInt(count) !== 0) {
         return false;
@@ -121,7 +121,7 @@ module.exports = function (app) {
 
   // return user object from database
   app.get('/api/search/:date', function (req, res) {
-    isUniqueSearch(req.params.date).then(function (isUnique) {
+    isUniqueSearch(req.params.date, req.user.id).then(function (isUnique) {
       res.json(isUnique);
     });
   });
