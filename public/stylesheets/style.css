@@ -2,17 +2,45 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+body {
+  background-image: url(../assets/stars.jpg);
+  align-self: center;
+  background-size: cover;
+  height: 100%;
+}
+
 .container-fluid {
   background: rgb(56, 9, 10);
 }
 .navbar {
   margin-bottom: 0px;
   border: none;
-  background-color: #f0f5f9;
+  background-color: #f0f5f9 !important;
 }
 .navbar-brand {
-  font-size: 30px;
   font-weight: 700;
+  font-size: 35px;
+  /* Fallback: Set a background color. */
+  background-color: #03045e;
+
+  /* Create the gradient. */
+  background-image: linear-gradient(
+    #83e377,
+    #80ffdb,
+    #64dfdf,
+    #48bfe3,
+    #5390d9,
+    #03045e
+  );
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .navbar-nav {
@@ -83,26 +111,37 @@ form.login {
   text-align: center;
 }
 /* signup */
-body {
-  background-image: url(../assets/stars.jpg);
-  align-self: center;
-  background-size: cover;
-}
+
 .header-signup,
 .login-option,
-.signup-btn {
+.signup-option,
+.login-header {
   color: #f0f5f9;
 }
-.header-signup {
-  margin-top: 20px;
+.header-signup,
+.login-header {
+  margin-top: 100px;
   text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+  color: #f0f5f9;
+}
+/* login */
+.login-btn,
+.signup-btn {
+  background-color: #f0f5f9;
+  color: #03045e;
+  border-color: #f0f5f9;
+  border-radius: 3px;
 }
 
 /* members */
 .scopes,
 .past-search-section,
 .member-header,
-.navbar {
+.navbar,
+.login-header,
+.header-signup {
   font-family: "Rajdhani", sans-serif;
 }
 
@@ -110,6 +149,7 @@ body {
   margin: 30px;
   background-color: #f0f5f9;
   align-items: center;
+  overflow: scroll;
 }
 .date {
   font-weight: 600;
@@ -121,7 +161,7 @@ body {
   align-self: center;
 }
 .member-header {
-  margin-top: 15px;
+  margin-top: 30px;
   text-align: center;
   font-weight: 700;
   font-size: 40px;
@@ -158,9 +198,23 @@ body {
   width: 10%;
   height: 30%;
 }
-button {
+.save {
   background-color: #03045e;
   color: #f0f5f9;
   border-color: #03045e;
-  text-align: center;
+  text-align: right;
+}
+.scope-list {
+  max-height: 500px;
+  overflow: scroll;
+}
+
+label {
+  color: white;
+}
+
+.theday {
+  font-size: 25px;
+  font-weight: 500;
+  color: #03045e;
 }
