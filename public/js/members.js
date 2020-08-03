@@ -7,6 +7,7 @@ $(document).ready(function () {
     $('#member-name').text(data.name);
     $('#member-sign').text(data.sign);
     $('#member-img').attr('src', 'assets/' + data.sign + '.png');
+    $('#member-img').attr('alt', 'Sign: ' + data.sign);
   });
 
   $.get('/api/allHoroscopes/', function (results) {
