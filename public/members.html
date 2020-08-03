@@ -25,7 +25,7 @@
   <body>
     <!-- NavBar -->
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="/assets/ScopeLogoPlain.png">SCOPE</a>
+      <a class="navbar-brand" href="/">SCOPE</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -52,7 +52,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-md-offset-3 member-header">
-          <h2>Welcome <span class="member-name"></span></h2>
+          <h2>Welcome<span class="member-name"></span></h2>
           <h3>Here is your 3 day Horoscope Forecast</h3>
         </div>
       </div>
@@ -63,15 +63,19 @@
         <img class="sign-pic" src="./assets/Cancer.png" alt="Cancer" />
         <ul class="nav nav-tabs justify-content-center">
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#yesterday"
+            <a class="nav-link theday" data-toggle="tab" href="#yesterday"
               >Yesterday</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#today">Today</a>
+            <a class="nav-link active theday" data-toggle="tab" href="#today"
+              >Today</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#tomorrow">Tomorrow</a>
+            <a class="nav-link theday" data-toggle="tab" href="#tomorrow"
+              >Tomorrow</a
+            >
           </li>
         </ul>
 
@@ -92,7 +96,9 @@
             <p id="lucky-time-yd" class="lucky-time"></p>
             <p class="label">Yesterday's Mood:</p>
             <p id="mood-yd" class="mood"></p>
-            <button id="yes-save" type="submit">Save Yesterday's Scope</button>
+            <button class="save" id="yes-save" type="submit">
+              Save Yesterday's Scope
+            </button>
           </div>
           <div class="tab-pane active" id="today">
             <h2 id="todays-date" class="date"></h2>
@@ -111,7 +117,9 @@
             <p id="lucky-time-td" class="lucky-time"></p>
             <p class="label">Today's Mood:</p>
             <p id="mood-td" class="mood"></p>
-            <button id="tod-save" type="submit">Save Today's Scope</button>
+            <button class="save" id="tod-save" type="submit">
+              Save Today's Scope
+            </button>
           </div>
           <div class="tab-pane " id="tomorrow">
             <h2 id="tomorrows-date" class="date"></h2>
@@ -130,7 +138,7 @@
             <p id="lucky-time-tm" class="lucky-time"></p>
             <p class="label">Tomorrow's Mood:</p>
             <p id="mood-tm" class="mood"></p>
-            <button id="tom-save" class="mx-auto" type="submit">
+            <button class="save" id="tom-save" class="mx-auto" type="submit">
               Save Tomorrow's Scope
             </button>
           </div>
